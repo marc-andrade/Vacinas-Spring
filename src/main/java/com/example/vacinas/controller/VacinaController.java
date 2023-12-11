@@ -1,6 +1,5 @@
-package com.example.vacinas.Controller;
+package com.example.vacinas.controller;
 
-import com.example.vacinas.model.Animal;
 import com.example.vacinas.model.Vacina;
 import com.example.vacinas.service.VacinaService;
 import jakarta.validation.Valid;

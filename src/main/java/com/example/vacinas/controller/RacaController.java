@@ -1,4 +1,4 @@
-package com.example.vacinas.Controller;
+package com.example.vacinas.controller;
 
 import com.example.vacinas.model.Raca;
 import com.example.vacinas.service.RacaService;
