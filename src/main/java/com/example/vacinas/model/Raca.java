@@ -25,4 +25,7 @@ public class Raca {
     @Size(min = 1, max = 50)
     private String nome;
 
+    public Raca(Long id) {
+        this.id = id;
+    }
 }
