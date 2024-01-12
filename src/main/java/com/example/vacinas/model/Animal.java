@@ -34,7 +34,7 @@ public class Animal {
     private String tipo;
     private LocalDate nascimento;
     @JoinColumn(name = "raca", referencedColumnName = "id")
-    @ManyToOne(optional = false, cascade = CascadeType.REMOVE)
+    @ManyToOne
     private Raca raca;
 
 }

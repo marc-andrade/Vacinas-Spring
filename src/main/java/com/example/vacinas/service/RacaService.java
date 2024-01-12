@@ -1,6 +1,8 @@
 package com.example.vacinas.service;
 
+import com.example.vacinas.model.Animal;
 import com.example.vacinas.model.Raca;
+import com.example.vacinas.repositories.AnimalRepository;
 import com.example.vacinas.repositories.RacaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -16,6 +18,7 @@ import java.util.List;
 public class RacaService {
 
     private final RacaRepository racaRepository;
+    private final AnimalRepository animalRepository;
 
     @Transactional
     public Raca findById(Long id) {
@@ -41,6 +44,12 @@ public class RacaService {
     public void delete(Long id) {
 
         try {
+            Raca raca = racaRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Raca não encontrada"));
+            List<Animal> animais = animalRepository.findByRaca(raca);
+            if(animais != null && !animais.isEmpty()) {
+                animais.forEach(animal -> animal.setRaca(null));
+                animalRepository.saveAll(animais);
+            }
             racaRepository.deleteById(id);
         }
         catch (EmptyResultDataAccessException e) {
