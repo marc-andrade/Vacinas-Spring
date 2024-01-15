@@ -32,10 +32,14 @@ public class VacinaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Vacina>> findAllPaged(){
+    public ResponseEntity<List<Vacina>> findAll(){
         return ResponseEntity.ok().body(vacinaService.findAll());
     }
 
+    @GetMapping("/animal")
+    public ResponseEntity<List<Vacina>> findAllByAnimalId(@RequestParam Long animalId){
+        return ResponseEntity.ok().body(vacinaService.findAllByAnimalId(animalId));
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Vacina> update(@PathVariable Long id, @RequestBody @Valid Vacina entity){

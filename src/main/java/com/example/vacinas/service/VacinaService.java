@@ -1,6 +1,8 @@
 package com.example.vacinas.service;
 
+import com.example.vacinas.model.Animal;
 import com.example.vacinas.model.Vacina;
+import com.example.vacinas.repositories.AnimalRepository;
 import com.example.vacinas.repositories.VacinaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -16,6 +18,8 @@ import java.util.List;
 public class VacinaService {
 
     private final VacinaRepository vacinaRepository;
+
+    private final AnimalService animalService;
 
     @Transactional
     public Vacina findById(Long id) {
@@ -53,5 +57,10 @@ public class VacinaService {
     @Transactional
     public List<Vacina> findAll() {
         return vacinaRepository.findAll();
+    }
+
+    public List<Vacina> findAllByAnimalId(Long animalId) {
+        Animal animal = animalService.findById(animalId);
+        return vacinaRepository.findByAnimal(animal);
     }
 }
