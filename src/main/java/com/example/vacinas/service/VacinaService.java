@@ -51,7 +51,7 @@ public class VacinaService {
             throw new EntityNotFoundException("Id not found " + id);
         }
         catch (DataIntegrityViolationException e) {
-            throw new DataIntegrityViolationException("Integrity violation");
+            throw new DataIntegrityViolationException("Não é possível apagar uma animal que possui vacinas.");
         }
     }
     @Transactional
