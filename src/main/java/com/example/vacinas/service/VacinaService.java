@@ -2,7 +2,6 @@ package com.example.vacinas.service;
 
 import com.example.vacinas.model.Animal;
 import com.example.vacinas.model.Vacina;
-import com.example.vacinas.repositories.AnimalRepository;
 import com.example.vacinas.repositories.VacinaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
